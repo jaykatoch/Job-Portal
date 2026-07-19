@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center mb-2">
+                        🤖 Create Account
+                    </h2>
+
+                    <p class="text-center text-muted mb-4">
+                        Join the AI Resume Screening System
+                    </p>
+
+                    {% if form.errors %}
+                    <div class="alter alter-danger">
+                        {{ form.errors }}
+                    </div>
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+    <label class="form-label">First Name</label>
+    {{ form.first_name }}
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Last Name</label>
+    {{ form.last_name }}
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Username</label>
+    {{ form.username }}
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Email</label>
+    {{ form.email }}
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Role</label>
+    {{ form.role }}
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Password</label>
+    {{ form.password1 }}
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Confirm Password</label>
+    {{ form.password2 }}
+</div>
+
+                        <div class="d-grid mt-3">
+                            <button class="btn btn-primary btn-lg">
+                                Create Account
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <hr>
+
+                    <p class="text-center">
+                        Already have an account?
+                        <a href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

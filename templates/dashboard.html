@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="p-5 rounded-4 text-white shadow"
+         style="background:linear-gradient(135deg,#0d6efd,#6610f2);">
+
+        <h1>👋 Welcome {{ request.user.username }}</h1>
+        <p>Find your dream job with AI-powered resume matching.</p>
+
+        <a href="/jobs/" class="btn btn-warning btn-lg">
+            Browse Jobs
+        </a>
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col-md-4">
+            <div class="card shadow p-4 text-center">
+                <h1>💼</h1>
+                <h4>Available Jobs</h4>
+                <a href="/jobs/" class="btn btn-primary mt-2">
+                    View Jobs
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-4 text-center">
+                <h1>📄</h1>
+                <h4>My Applications</h4>
+                <a href="/jobs/my-applications/" class="btn btn-success mt-2">
+                    View
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-4 text-center">
+                <h1>🤖</h1>
+                <h4>AI Resume Score</h4>
+                <a href="/jobs/resume-score/" class="btn btn-info mt-2">
+                    Check Score
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

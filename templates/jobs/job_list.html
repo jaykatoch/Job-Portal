@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center mb-5">
+    💼 Available Jobs
+</h1>
+
+<div class="p-5 mb-5 rounded-4 text-white shadow"
+style="background:linear-gradient(135deg,#0d6efd,#6610f2);">
+
+    <h1 class="display-5 fw-bold">
+        Find Your Dream Job 🚀
+    </h1>
+
+    <p class="lead">
+        AI-powered job recommendations based on your resume.
+    </p>
+
+</div>
+
+<div class="input-group input-group-lg mb-5">
+
+<span class="input-group-text">
+🔍
+</span>
+
+<input
+type="text"
+id="searchJob"
+class="form-control"
+placeholder="Search by Job Title, Company or Skills">
+
+</div>
+
+<div class="row">
+
+{% for job in jobs %}
+
+<div class="col-md-6 col-lg-4 mb-4">
+
+<div class="card h-100 shadow-lg border-0 rounded-4">
+
+<div class="card-body">
+<div class="text-center mb-3">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+         width="70"
+         class="rounded-circle shadow">
+</div>
+
+<h3 class="card-title">
+{{ job.title }}
+</h3>
+<div class="d-flex justify-content-between">
+
+<span class="badge bg-danger">
+🔥 Hiring
+</span>
+
+<span class="badge bg-info">
+Full Time
+</span>
+
+</div>
+
+<h5 class="text-primary">
+🏢 {{ job.company }}
+</h5>
+
+<p>
+📍 {{ job.location }}
+</p>
+
+<p class="text-muted">
+🕒 Posted Today
+</p>
+
+<p>
+<span class="badge bg-success fs-6">
+💰 ₹{{ job.salary }}
+</span>
+</p>
+
+<p>
+<div class="mt-3">
+
+<span class="badge bg-primary me-1">
+Python
+</span>
+
+<span class="badge bg-success me-1">
+SQL
+</span>
+
+<span class="badge bg-warning text-dark me-1">
+Power BI
+</span>
+
+</div>
+</p>
+
+<a href="/jobs/{{ job.id }}/"
+   class="btn text-white fw-bold w-100"
+   style="background: linear-gradient(90deg, #0d6efd, #6610f2); border:none;">
+    View Details →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+<script>
+
+document.getElementById("searchJob").addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+document.querySelectorAll(".col-md-6").forEach(function(card){
+
+card.style.display=
+card.innerText.toLowerCase().includes(value)
+?
+"block"
+:
+"none";
+
+});
+
+});
+
+</script>
+{% endblock %}

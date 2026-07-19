@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section text-center text-white py-5 rounded-4 shadow">
+    <div class="container">
+
+        <h1 class="display-3 fw-bold">
+            🤖 AI Resume Screening System
+        </h1>
+
+        <p class="lead mt-3">
+            Find Your Dream Job with AI Powered Resume Matching
+        </p>
+
+        <p class="mb-4">
+            Upload your resume, discover jobs, and receive intelligent
+            recommendations based on your skills.
+        </p>
+
+        <a href="{% url 'job_list' %}" class="btn btn-warning btn-lg px-5">
+            Browse Jobs
+        </a>
+
+    </div>
+</section>
+
+<!-- How it Works -->
+<section class="container mt-5">
+
+    <h2 class="text-center mb-5">
+        How It Works
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-3">
+            <div class="card shadow p-4">
+                <h1>📝</h1>
+                <h4>Register</h4>
+                <p>Create your account.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-4">
+                <h1>📄</h1>
+                <h4>Upload Resume</h4>
+                <p>Upload your latest resume.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-4">
+                <h1>🤖</h1>
+                <h4>AI Analysis</h4>
+                <p>AI compares resume with jobs.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-4">
+                <h1>🎯</h1>
+                <h4>Apply</h4>
+                <p>Apply to matching jobs instantly.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
