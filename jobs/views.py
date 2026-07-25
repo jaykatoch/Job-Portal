@@ -13,13 +13,14 @@ def post_job(request):
     if request.user.profile.role != "recruiter":
         return redirect("dashboard")
 
+    if request.method == "POST":
+        form = JobForm(request.POST)
+
         if form.is_valid():
             job = form.save(commit=False)
             job.recruiter = request.user
             job.save()
             return redirect("recruiter_dashboard")
-        else:
-            print(form.errors)
 
     else:
         form = JobForm()
@@ -144,4 +145,12 @@ def my_applications(request):
 
 @login_required
 def home(request):
-    return render(request, "jobs/home.html")
+    jobs = Job.objects.all()[:6]
+
+    context = {
+        "jobs": jobs,
+        "total_jobs": Job.objects.count(),
+        "total_applications": 7,   # Replace with actual count if you have one
+    }
+
+    return render(request, "jobs/home.html", context)

@@ -19,14 +19,10 @@ class Application(models.Model):
     applicant = models.ForeignKey(User, on_delete=models.CASCADE)
     resume = models.FileField(upload_to="resumes/")
     applied_at = models.DateTimeField(auto_now_add=True)
+    match_score = models.FloatField(default=0)
 
     def __str__(self):
         return f"{self.applicant.username} - {self.job.title}"
     
 match_score = models.FloatField(default=0)
 
-class Application(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    applicant = models.ForeignKey(User, on_delete=models.CASCADE)
-    resume = models.FileField(upload_to="resumes/")
-    match_score = models.FloatField(default=0)
