@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}AI Resume Score{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header text-center text-white"
+             style="background:linear-gradient(135deg,#0d6efd,#6610f2);">
+
+            <h2>🤖 AI Resume Analysis</h2>
+
+        </div>
+
+        <div class="card-body text-center">
+
+            {% if application %}
+
+            <h3 class="mb-4">
+                Welcome {{ request.user.username }}
+            </h3>
+
+            <h5>Match Score</h5>
+
+            <div class="progress mb-4" style="height:30px;">
+
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+                     style="width: {{ application.match_score }}%;">
+
+                    {{ application.match_score }}%
+
+                </div>
+
+            </div>
+
+            <h5 class="mb-3">
+                Applied Job:
+                <span class="text-primary">
+                    {{ application.job.title }}
+                </span>
+            </h5>
+
+            <hr>
+
+            <h5>AI Recommendation</h5>
+
+            {% if application.match_score >= 70 %}
+
+                <span class="badge bg-success fs-5">
+                    ✅ Selected
+                </span>
+
+            {% elif application.match_score >= 50 %}
+
+                <span class="badge bg-warning text-dark fs-5">
+                    ⭐ Shortlisted
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-danger fs-5">
+                    ❌ Rejected
+                </span>
+
+            {% endif %}
+
+            <br><br>
+
+            <a href="{{ application.resume.url }}"
+               target="_blank"
+               class="btn btn-primary">
+
+               📄 View Resume
+
+            </a>
+
+            {% else %}
+
+            <h3>No Resume Found</h3>
+
+            <p>
+                Apply for a job first to see your AI Resume Score.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
